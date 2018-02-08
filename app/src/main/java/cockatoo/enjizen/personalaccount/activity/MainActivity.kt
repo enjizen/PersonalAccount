@@ -5,6 +5,9 @@ import android.os.Bundle
 import cockatoo.enjizen.personalaccount.R
 import cockatoo.enjizen.personalaccount.fragment.MainFragment
 
+/**
+ * Wanchalerm Yuphasuk
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
