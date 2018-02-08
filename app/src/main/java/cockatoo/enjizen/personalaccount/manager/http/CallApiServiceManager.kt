@@ -29,6 +29,12 @@ class CallApiServiceManager(listener: CallApiServiceManagerListener, fragmentMan
     private var fragmentManager: FragmentManager? = fragmentManager
 
 
+    init {
+        this.context = Contextor.getContext()
+        this.apiService = HttpManager.getService()
+    }
+
+
     fun getProvince(){
         val call = apiService!!.getProvince(context!!.resources.getString(R.string.locale))
         call.enqueue(object: Callback<ProvinceModel>{
@@ -37,14 +43,15 @@ class CallApiServiceManager(listener: CallApiServiceManagerListener, fragmentMan
             override fun onResponse(call: Call<ProvinceModel>?, response: Response<ProvinceModel>?) {
                 if(response!!.isSuccessful){
                     mListener!!.provinceResponse(response.body()!!)
+                    mListener!!.onHideLoadingDialog()
                 }
                 else{
-                    showAlertDialog()
+                    onError()
                 }
             }
 
             override fun onFailure(call: Call<ProvinceModel>?, t: Throwable?) {
-                showAlertDialog()
+               onError()
             }
 
 
@@ -52,14 +59,14 @@ class CallApiServiceManager(listener: CallApiServiceManagerListener, fragmentMan
         })
     }
 
-    private fun showAlertDialog(){
+    private fun onError(){
+        mListener!!.onHideLoadingDialog()
         DialogUtil.showAlertDialog(fragmentManager!!,"aaaaa",R.string.ok)
+
     }
 
-    init {
-        this.context = Contextor.getContext()
-        this.apiService = HttpManager.getService()
-    }
+
+
 
 
 }

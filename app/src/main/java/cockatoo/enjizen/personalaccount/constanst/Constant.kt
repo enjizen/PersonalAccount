@@ -1,10 +1,11 @@
 package cockatoo.enjizen.personalaccount.constanst
 
 /**
- * Created by streami.t.mobiledeveloper1 on 28/12/2017 AD.
+ * Created by Wanchalerm Yuphasuk on 28/12/2017 AD.
  */
 
 object Constant {
+
     val PROVINCE_LIST_ARGUMENT = "province argument"
 
     val KEY_MESSAGE = "key message"

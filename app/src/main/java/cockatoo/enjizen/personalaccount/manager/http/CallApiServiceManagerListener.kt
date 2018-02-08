@@ -7,4 +7,6 @@ import cockatoo.enjizen.personalaccount.model.retrofit.ProvinceModel
  */
 interface CallApiServiceManagerListener {
      fun provinceResponse(provinceModel: ProvinceModel)
+
+     fun onHideLoadingDialog()
 }

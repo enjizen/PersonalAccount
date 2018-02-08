@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("masterdata/provincee")
+    @GET("masterdata/province")
     fun getProvince(@Query("lang") lang: String): Call<ProvinceModel>
 
     /*@GET("masterdata/amphur")
