@@ -8,6 +8,7 @@ import cockatoo.enjizen.personalaccount.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import android.support.v4.app.Fragment
+import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import cockatoo.enjizen.personalaccount.fragment.BankAccountFragment
 import cockatoo.enjizen.personalaccount.fragment.BankFragment
@@ -17,7 +18,7 @@ import cockatoo.enjizen.personalaccount.fragment.BankFragment
  * Created by wanchalermyuphasuk on 4/2/2018 AD.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    private lateinit var drawerToggle: ActionBarDrawerToggle
+    //private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +29,13 @@ abstract class BaseActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         setupDrawerContent()
 
-        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
-        drawerLayout.addDrawerListener(drawerToggle)
+        //drawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
+        //drawerLayout.addDrawerListener(drawerToggle)
+
+        btnDashboardHamburger.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
+
     }
 
     private fun setupDrawerContent() {
@@ -40,7 +46,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 })
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
+   /* override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
         drawerToggle.syncState()
@@ -50,7 +56,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onConfigurationChanged(newConfig)
 
         drawerToggle.onConfigurationChanged(newConfig)
-    }
+    }*/
 
     private fun selectDrawerItem(menuItem: MenuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
@@ -79,11 +85,11 @@ abstract class BaseActivity : AppCompatActivity() {
         drawerLayout.closeDrawers()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (drawerToggle.onOptionsItemSelected(item)) {
             true
         } else super.onOptionsItemSelected(item)
-    }
+    }*/
 
 
 }

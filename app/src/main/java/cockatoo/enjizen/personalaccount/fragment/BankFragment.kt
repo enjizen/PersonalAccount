@@ -36,5 +36,13 @@ class BankFragment : BaseFragment(){
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun onRestoreInstanceState(savedInstanceState: Bundle) {
+
+    }
+
 
 }// Required empty public constructor
