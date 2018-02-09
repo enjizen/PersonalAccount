@@ -2,17 +2,17 @@ package cockatoo.enjizen.personalaccount.db
 
 import android.content.ContentValues
 import android.database.Cursor
-import cockatoo.enjizen.personalaccount.constanst.TableName
+import cockatoo.enjizen.personalaccount.constanst.DBConstant
 import cockatoo.enjizen.personalaccount.manager.DBInstant
 import cockatoo.enjizen.personalaccount.model.Bank
 
 /**
  * Created by Wanchalerm Yuphasuk on 8/2/2018 AD.
  */
-object BankDBHelper {
+object BankManager {
 
 
-    private val subjectName = TableName.Bank
+    private val subjectName = DBConstant.Bank
 
     fun insert(contentValues: ContentValues){
         val db = DBInstant.getDBInstant()!!.readableDatabase

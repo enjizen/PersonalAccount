@@ -20,6 +20,17 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : BaseFragment() {
 
 
+    companion object {
+        fun newInstance(): MainFragment{
+            val fragment = MainFragment()
+            val bundle = Bundle()
+            fragment.arguments = bundle
+
+            return fragment
+        }
+    }
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
             inflater!!.inflate(R.layout.fragment_main, container, false)
@@ -47,14 +58,6 @@ class MainFragment : BaseFragment() {
     }
 
 
-    companion object {
-        fun newInstance(): MainFragment{
-            val fragment = MainFragment()
-            val bundle = Bundle()
-            fragment.arguments = bundle
 
-            return fragment
-        }
-    }
 
 }

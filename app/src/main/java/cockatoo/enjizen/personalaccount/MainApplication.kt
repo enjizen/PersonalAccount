@@ -2,7 +2,7 @@ package cockatoo.enjizen.personalaccount
 
 import android.app.Application
 import cockatoo.enjizen.personalaccount.manager.Contextor
-import cockatoo.enjizen.personalaccount.manager.DBHelper
+import cockatoo.enjizen.personalaccount.manager.DBManager
 import cockatoo.enjizen.personalaccount.manager.DBInstant
 
 /**
@@ -14,7 +14,7 @@ class MainApplication : Application() {
         super.onCreate()
        Contextor.init(applicationContext)
 
-        val myDatabaseOpenHelper =  DBHelper(applicationContext)
+        val myDatabaseOpenHelper =  DBManager(applicationContext)
         DBInstant.init(myDatabaseOpenHelper)
     }
 }
