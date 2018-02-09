@@ -7,4 +7,6 @@
     <string name="ok">ok</string>
     <string name="open_drawer">Open Menu</string>
     <string name="close_drawer">Close Menu</string>
+    <string name="menu_bank">ธนาคาร</string>
+    <string name="menu_passbook">สมุดบัญชี</string>
 </resources>

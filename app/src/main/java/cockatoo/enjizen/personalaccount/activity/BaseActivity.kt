@@ -2,64 +2,88 @@ package cockatoo.enjizen.personalaccount.activity
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import cockatoo.enjizen.personalaccount.R
 import kotlinx.android.synthetic.main.activity_main.*
-import android.app.Activity
-import android.view.View
-import org.jetbrains.anko.activityManager
+import kotlinx.android.synthetic.main.toolbar.*
+import android.support.v4.app.Fragment
+import android.support.v7.app.ActionBarDrawerToggle
+import cockatoo.enjizen.personalaccount.fragment.BankAccountFragment
+import cockatoo.enjizen.personalaccount.fragment.BankFragment
 
 
 /**
  * Created by wanchalermyuphasuk on 4/2/2018 AD.
  */
- abstract class BaseActivity : AppCompatActivity() {
-    private lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
+abstract class BaseActivity : AppCompatActivity() {
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    protected fun setUpViewDrawerLayout() {
+        setSupportActionBar(toolbar)
+        setupDrawerContent()
 
-
-    protected fun setDrawerLayout() {
-
-        setSupportActionBar(toolBar)
-
-        actionBarDrawableToggle = ActionBarDrawerToggle(this as Activity,drawerLayout, R.string.open_drawer, R.string.close_drawer)
-
-
-
-        drawerLayout.addDrawerListener(actionBarDrawableToggle)
-
-        supportActionBar!!.setHomeButtonEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-
+        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
+        drawerLayout.addDrawerListener(drawerToggle)
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
+    private fun setupDrawerContent() {
+        nvView.setNavigationItemSelectedListener(
+                { menuItem ->
+                    selectDrawerItem(menuItem)
+                    true
+                })
+    }
 
-        actionBarDrawableToggle.syncState()
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
+        drawerToggle.syncState()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
 
-        actionBarDrawableToggle.onConfigurationChanged(newConfig)
+        drawerToggle.onConfigurationChanged(newConfig)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    private fun selectDrawerItem(menuItem: MenuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        var fragment: Fragment? = null
+        val fragmentClass: Class<*> = when (menuItem.itemId) {
+            R.id.nav_bank -> BankFragment::class.java
+            R.id.nav_second_fragment -> BankAccountFragment::class.java
+            else -> BankFragment::class.java
+        }
 
-        return if (actionBarDrawableToggle.onOptionsItemSelected(item)) {
+        try {
+            fragment = fragmentClass.newInstance() as Fragment
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.contentContainer, fragment).commit()
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.isChecked = true
+        // Set action bar title
+        title = menuItem.title
+        // Close the navigation drawer
+        drawerLayout.closeDrawers()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (drawerToggle.onOptionsItemSelected(item)) {
             true
         } else super.onOptionsItemSelected(item)
-
-
     }
+
+
 }
