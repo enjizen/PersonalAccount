@@ -1,7 +1,5 @@
 package cockatoo.enjizen.personalaccount.activity
 
-import android.content.res.Configuration
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import cockatoo.enjizen.personalaccount.R
@@ -9,7 +7,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import cockatoo.enjizen.personalaccount.fragment.BankAccountFragment
 import cockatoo.enjizen.personalaccount.fragment.BankFragment
 
@@ -19,11 +16,6 @@ import cockatoo.enjizen.personalaccount.fragment.BankFragment
  */
 abstract class BaseActivity : AppCompatActivity() {
     //private lateinit var drawerToggle: ActionBarDrawerToggle
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     protected fun setUpViewDrawerLayout() {
         setSupportActionBar(toolbar)
