@@ -9,4 +9,5 @@
     <string name="close_drawer">Close Menu</string>
     <string name="menu_bank">ธนาคาร</string>
     <string name="menu_passbook">สมุดบัญชี</string>
+    <string name="myAlphaNumeric">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
 </resources>

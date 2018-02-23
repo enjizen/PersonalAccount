@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
+import cockatoo.enjizen.personalaccount.fragment.AddBankAccountFragment
 import cockatoo.enjizen.personalaccount.fragment.BankAccountFragment
 import cockatoo.enjizen.personalaccount.fragment.BankFragment
 
@@ -17,7 +18,7 @@ import cockatoo.enjizen.personalaccount.fragment.BankFragment
 abstract class BaseActivity : AppCompatActivity() {
     //private lateinit var drawerToggle: ActionBarDrawerToggle
 
-    protected fun setUpViewDrawerLayout() {
+    protected fun setupDrawerLayout() {
         setSupportActionBar(toolbar)
         setupDrawerContent()
 
@@ -55,7 +56,7 @@ abstract class BaseActivity : AppCompatActivity() {
         var fragment: Fragment? = null
         val fragmentClass: Class<*> = when (menuItem.itemId) {
             R.id.nav_bank -> BankFragment::class.java
-            R.id.nav_second_fragment -> BankAccountFragment::class.java
+            R.id.nav_second_fragment -> AddBankAccountFragment::class.java
             else -> BankFragment::class.java
         }
 

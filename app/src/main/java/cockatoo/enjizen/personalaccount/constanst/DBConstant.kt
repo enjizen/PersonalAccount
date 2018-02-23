@@ -9,6 +9,7 @@ object DBConstant {
         const val NAME = "bank_name"
         const val ID = "idBank"
         const val FORMAT_NUMBER = "format_number"
+        const val IMAGE_URL = "image_url"
         const val IS_DELETED = "is_deleted"
     }
 

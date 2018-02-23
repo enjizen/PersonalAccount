@@ -4,6 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import cockatoo.enjizen.personalaccount.constanst.Constant
 import cockatoo.enjizen.personalaccount.constanst.DBConstant
+import cockatoo.enjizen.personalaccount.db.BankManager
+import cockatoo.enjizen.personalaccount.model.Bank
 import org.jetbrains.anko.db.*
 
 /**
@@ -14,14 +16,19 @@ class DBManager(ctx: Context) : ManagedSQLiteOpenHelper(ctx, DB_NAME,null, DB_VE
         createTableBank(db)
     }
 
+
+
     private fun createTableBank(db: SQLiteDatabase?) {
         db!!.createTable(DBConstant.Bank.TABLE_NAME,true,
                   DBConstant.Bank.ID to INTEGER + PRIMARY_KEY + UNIQUE ,
                             DBConstant.Bank.NAME to TEXT,
                             DBConstant.Bank.FORMAT_NUMBER to TEXT,
+                            DBConstant.Bank.IMAGE_URL to TEXT,
                             DBConstant.Bank.IS_DELETED to INTEGER
                         )
     }
+
+
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

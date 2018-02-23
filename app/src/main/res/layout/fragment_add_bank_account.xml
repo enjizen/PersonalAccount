@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/default_margin_padding_large"
+    android:paddingRight="@dimen/default_margin_padding_large"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="cockatoo.enjizen.personalaccount.fragment.AddBankAccountFragment">
+
+    <cockatoo.enjizen.personalaccount.view.PerEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        app:hintText="BankName"
+        app:required="true"
+        />
+</RelativeLayout>

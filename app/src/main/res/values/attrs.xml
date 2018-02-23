@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="per_edit_text">
+        <attr name="hintText" format="string"/>
+        <attr name="text" format="string"/>
+        <attr name="required" format="boolean"/>
+        <attr name="enable" format="boolean"/>
+        <attr name="englishOnly" format="boolean"/>
+        <attr name="android:inputType" />
+    </declare-styleable>
+</resources>

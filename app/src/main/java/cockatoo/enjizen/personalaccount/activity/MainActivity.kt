@@ -13,7 +13,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setUpViewDrawerLayout()
+        setupDrawerLayout()
 
         if(savedInstanceState == null){
             supportFragmentManager.beginTransaction()
